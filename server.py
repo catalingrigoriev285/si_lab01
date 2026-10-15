@@ -51,6 +51,26 @@ def estimate_energy(name: str, hours: float) -> dict:
         "energie_kwh": round(info["putere_w"] * hours / 1000, 3),
     }
 
+@mcp.tool
+def total_power(devices: list[str]) -> dict:
+    """Adună puterea (în W) mai multor dispozitive care funcționează simultan.
+
+    Primește o listă de nume de dispozitive (ex. ["radiator", "lampa_led"]) și
+    returnează puterea totală, puterea fiecăruia și dispozitivele necunoscute.
+    """
+    puteri, necunoscute = {}, []
+    for name in devices:
+        cheie = name.strip().lower()
+        if cheie in DEVICES:
+            puteri[cheie] = DEVICES[cheie]["putere_w"]
+        else:
+            necunoscute.append(name)
+    rezultat = {"putere_totala_w": sum(puteri.values()), "detalii_w": puteri}
+    if necunoscute:
+        rezultat["necunoscute"] = necunoscute
+        rezultat["cunoscute"] = sorted(DEVICES)
+    return rezultat
+
 @mcp.resource("device://{name}/manual")
 def manual(name: str) -> str:
     """Un manual (fictiv) de o linie, expus ca resursă."""

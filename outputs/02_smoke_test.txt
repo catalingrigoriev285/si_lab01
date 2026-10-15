@@ -1,0 +1,19 @@
+Rezultatul rulării: python smoke_test.py
+(cheia API NU apare în ieșire; conectorul o citește din .env și nu o afișează)
+
+=== Furnizor Gemini (LLM_PROVIDER=gemini) ===
+
+(.venv) PS C:\Users\catalin\OneDrive\Documents\GitHub\si_lab01> python smoke_test.py
+Furnizor: gemini | model: gemini-3.5-flash-lite | adresă: https://generativelanguage.googleapis.com/v1beta/openai/
+MCP înseamnă Protocolul pentru Contextul Modelului, un standard deschis dezvoltat de Anthropic pentru a conecta inteligența artificială la surse externe de date.
+
+=== Furnizor Ollama, model local (LLM_PROVIDER=ollama) ===
+
+(.venv) PS C:\Users\catalin\OneDrive\Documents\GitHub\si_lab01> python smoke_test.py
+Furnizor: ollama | model: qwen3:1.7b | adresă: http://localhost:11434/v1/
+MCP este un acronim comun care poate reprezenta "Minimum Purchase Requirement" în finanțe sau "Market Confidence Profile" în economie, depinde de contextul specific.
+
+Observație: ambii furnizori răspund, deci conectorul funcționează. Doar Gemini știe însă
+corect ce este MCP (Model Context Protocol). Modelul local mic (1,7 miliarde de parametri)
+„ghicește" un sens al acronimului; la o rulare anterioară a răspuns că MCP este un protocol
+de comunicații mobile. Este exact limitarea modelelor mici descrisă în secțiunea 6.
