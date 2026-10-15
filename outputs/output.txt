@@ -1,0 +1,75 @@
+4.3.1. get_device_info(radiator, frigider)
+{
+  "nume": "radiator",
+  "categorie": "încălzire",
+  "putere_w": 1500,
+  "note": "Controlat de termostatul camerei."
+}
+
+{"eroare":"Dispozitiv necunoscut: frigider ","cunoscute":["aer_conditionat","jaluzele","lampa_led","radiator","senzor_miscare","ventilatie"]}
+
+4.3.2. check_conflict(radiator, aer_conditionat)
+{
+  "result": "RIDICAT - încălzire și răcire simultană, consum inutil."
+}
+
+4.3.3. estimate_energy(radiator, 2)
+{
+  "nume": "radiator",
+  "ore": 2,
+  "energie_kwh": 3
+}
+
+4.4.5. energy_review(radiator, aer_conditionat)
+Analizează această listă de dispozitive: radiator, aer_conditionat. Folosește instrumentele pentru a verifica conflictele și a estima consumul.
+
+4.5.6.
+ "jsonrpc": "2.0",
+
+(.venv) PS C:\Users\catalin\OneDrive\Documents\GitHub\si_lab01> py .\smoke_test.py
+Furnizor: gemini | model: gemini-3.5-flash-lite | adresă: https://generativelanguage.googleapis.com/v1beta/openai/
+MCP înseamnă Protocolul pentru Contextul Modelului (Model Context Protocol).
+
+(.venv) PS C:\Users\catalin\OneDrive\Documents\GitHub\si_lab01> py .\smoke_test.py
+Furnizor: ollama | model: qwen3:1.7b | adresă: http://localhost:11434/v1/
+MCP în contextul tehnologiei este un protocol de comunicații mobile utilizat în rețelele de comunicații wireless.
+
+#########################################
+
+(.venv) PS C:\Users\catalin\OneDrive\Documents\GitHub\si_lab01> python chat.py
+Furnizor: ollama | model: qwen3:1.7b
+Instrumente: list_devices, get_device_info, check_conflict, estimate_energy
+Comenzi: /reset (conversație nouă), /iesire
+
+Tu: Salut
+Agent: Salut! Îți mulțumesc pentru salut. Cum poate ajuta ceva acum?
+
+Tu: Care este lista de dispozitive?
+  [instrument] list_devices({}) -> ["aer_conditionat","jaluzele","lampa_led","radiator","senzor_miscare","ventilatie"]
+Agent: Lista dispozitivelor în clădire este:
+1. **Aer condiționat**
+2. **Jaluzele**
+3. **Lampă LED**
+4. **Radiator**
+5. **Senzor de mișcare**
+6. **Ventilatie**
+
+Ai nevoie de informații suplimentare, cum ar fi informații despre un dispozitiv sau verificări de conflict?
+
+Tu: Oferami informatii despre radiator
+  [instrument] get_device_info({'name': 'radiator'}) -> {"nume":"radiator","categorie":"încălzire","putere_w":1500,"note":"Controlat de termostatul camerei."}
+Agent: Dispozitivul **radiator** este de categorie **încălzire**, cu o putere de **1500 W**. Este controlat de **termostatul camerei**.
+
+Ai nevoie de informații despre un alt dispozitiv sau vrei să verifici un conflict de funcționare?
+
+Tu: Estimeaza energia de 6 ore pentru acesta
+  [instrument] estimate_energy({'name': 'radiator', 'hours': 6}) -> {"nume":"radiator","ore":6.0,"energie_kwh":9.0}
+Agent: Dispozitivul **radiator** consumă **9 kWh** în cazul în care funcționează pentru **6 ore**. Calculul este: $ 1\,500\,W \times 6\,h = 9\,kWh $.
+
+Ai nevoie de informații suplimentare?
+
+Tu: /exit
+Agent: Îți mulțumesc pentru folosirea clădirii inteligente. În casă ești așteptat pentru întrebări suplimentare. Bon venit nou! 😊
+
+Tu: /iesire
+(.venv) PS C:\Users\catalin\OneDrive\Documents\GitHub\si_lab01>

@@ -16,6 +16,7 @@ DEVICES = {
 CONFLICTE = {
     frozenset({"radiator", "aer_conditionat"}): "RIDICAT - încălzire și răcire simultană, consum inutil.",
     frozenset({"aer_conditionat", "ventilatie"}): "MEDIU - aerul exterior scade eficiența climatizării.",
+    frozenset({"senzor_miscare", "jaluzele"}): "MEDIU - mișcarea jaluzelelor poate fi detectată de senzorul de mișcare.",
 }
 
 @mcp.tool

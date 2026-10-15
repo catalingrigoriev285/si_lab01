@@ -1,0 +1,21 @@
+7.6.1.
+
+Tu: Ce conflict există între radiator și aer condiționat și cât ar consuma amândouă în 2 ore?
+  [instrument] check_conflict({'device_a': 'radiator', 'device_b': 'air_conditioner'}) -> Niciun conflict înregistrat în setul de date de test.
+  [instrument] estimate_energy({'hours': 2, 'name': 'radiator'}) -> {"nume":"radiator","ore":2.0,"energie_kwh":3.0}
+  [instrument] estimate_energy({'name': 'air_conditioner', 'hours': 2}) -> {"eroare":"Dispozitiv necunoscut: air_conditioner","cunoscute":["aer_conditionat","jaluzele","lampa_led","radiator","senzor_miscare","ventilatie"]}
+Agent: Conflict de funcționare între radiator și aer condiționat nu a fost înregistrat.
+Radiatoarele consume 3.0 kWh în 2 ore.
+Aerul condiționat nu a fost estimat deoarece dispozitivul este necunoscut (în momentul actual, se consideră "aer_conditionat" ca model corect).
+
+7.6.2.
+Tu: Cât consumă frigiderul?
+Agent: Pentru a determina consumul de energie al frigidorului, este necesar să se cunoască durata de funcționare (în ore). Vă rugăm să furnizați numărul de ore pe care frigidorul-lă funcționează.
+
+Tu: 2 ore
+  [instrument] estimate_energy({'name': 'aer_conditionat', 'hours': 2}) -> {"nume":"aer_conditionat","ore":2.0,"energie_kwh":4.0}
+Agent: Aerul condiționat consume 4.0 kWh în 2 ore. Dispozitivul este cunoscut în setul de date. Dacă ai întrebări suplimentare, pot să le încercăm.
+
+7.6.3.
+Tu: Cât face 12 ori 12?
+Agent: Nu pot să efectuez calcule aritmetice. Funcțiile disponibile sunt pentru monitorizarea dispozitivelor, verificarea conflicturilor și estimarea consumului de energie. Pentru calculul 12 × 12, recomand să folosești un calculator standard.
