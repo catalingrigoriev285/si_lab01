@@ -19,3 +19,4 @@ Agent: Aerul condiționat consume 4.0 kWh în 2 ore. Dispozitivul este cunoscut 
 7.6.3.
 Tu: Cât face 12 ori 12?
 Agent: Nu pot să efectuez calcule aritmetice. Funcțiile disponibile sunt pentru monitorizarea dispozitivelor, verificarea conflicturilor și estimarea consumului de energie. Pentru calculul 12 × 12, recomand să folosești un calculator standard.
+
